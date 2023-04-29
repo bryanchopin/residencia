@@ -1,0 +1,47 @@
+.sideBarContainer{
+    width: min(50%, 400px);
+    height: 100vh;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    animation: slideInFromRight 1s;
+    animation-fill-mode: forwards;
+}
+
+
+.sideBarContainerOff{
+    width: min(50%, 400px);
+    height: 100vh;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    animation: slideOutToRight 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideInFromRight {
+    0% {
+        display: none;
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+        display: flex;
+    }
+    
+}
+
+@keyframes slideOutToRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+        display: none;
+    }
+    
+}

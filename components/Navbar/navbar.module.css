@@ -1,0 +1,39 @@
+.navbarContainer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.navbar{
+    height: 90%;
+    width: min(80%, 700px);
+    background-color: azure;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navLinkContainer{
+    width: 4em;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.iconLink{
+    font-size: 2.5em;
+}
+
+.textLink{
+    font-size: 0.8em;
+}
