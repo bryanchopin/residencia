@@ -1,6 +1,8 @@
 import styles from "./mapContainer.module.css";
 import { useState, useEffect } from "react";
 import "leaflet/dist/leaflet.css";
+import "leaflet-defaulticon-compatibility";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import dynamic from "next/dynamic";
 
 const MapContainer = dynamic(
@@ -23,11 +25,35 @@ const Popup = dynamic(
   { ssr: false, loading: () => <p>Loading...</p> }
 );
 
+// const L = dynamic(() => import("leaflet"), {
+//   ssr: false, loading: () => <p>Loading...</p>,
+// });
+
+// const iconDefault = L.icon({
+//   iconUrl:
+//     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+//   iconRetinaUrl:
+//     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
+//   shadowUrl:
+//     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+//   iconSize: [25, 41],
+//   iconAnchor: [12, 41],
+//   popupAnchor: [1, -34],
+//   tooltipAnchor: [16, -28],
+//   shadowSize: [41, 41],
+// });
+
 export default function MapMainContainer({ location }) {
+  const [center, setCenter] = useState(location);
+
+  useEffect(() => {
+    setCenter(location);
+  }, [location]);
+
   return (
     <MapContainer
       id="map"
-      center={location}
+      center={center}
       zoom={13}
       className={styles.mapContainer}
     >
@@ -35,12 +61,9 @@ export default function MapMainContainer({ location }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
       />
-      <Marker
-        position={location}
-        // icon={iconDefault}
-      >
+      <Marker position={center} >
         <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
+          Secretaria de salud mental. <br /> 6647517723.
         </Popup>
       </Marker>
     </MapContainer>

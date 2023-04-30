@@ -1,25 +1,40 @@
 import styles from "./mainContainer.module.css";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export default function MainContainer() {
-
-  const [location, setLocation] = useState(null);
-
+export default function MainContainer({
+  handleShowMainView,
+  state,
+  stateAllowedUbication,
+  handleAllowedUbication,
+  setLocation,
+  location
+}) {
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        setLocation({ lat: latitude, lng: longitude });
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }, []);
+    if (stateAllowedUbication) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLocation({ lat: latitude, lng: longitude });
+        },
+        () => {
+          console.log("No se pudo obtener la ubicación");
+        }
+      );
+    }
+  }, [stateAllowedUbication]);
+
+const handleClick = () => {
+  handleAllowedUbication();
+
+  if(location && stateAllowedUbication)
+    handleShowMainView();
+}
+
+  const stateMainView = state ? styles.MainContainer : styles.MainContainerOff;
 
   return (
-    <div className={styles.MainContainer}>
+    <div className={stateMainView}>
       <div className={styles.titleContainer}>
         <h1>Directorio de servicios médicos internacionales</h1>
       </div>
@@ -27,15 +42,19 @@ export default function MainContainer() {
         <Image alt="MainLogo" src="/logoItt.png" width={150} height={150} />
       </div>
       <div className={styles.buttonContainer}>
-        <button className={styles.button}>Permitir Ubicación</button>
+        <button onClick={handleClick} className={styles.button}>
+          {location && stateAllowedUbication ? "Ingresar" : "Obtener Ubicación"}
+        </button>
       </div>
       <div>
-      {location ? (
-        <p>Latitud: {location.lat}, Longitud: {location.lng}</p>
-      ) : (
-        <p>Obteniendo ubicación...</p>
-      )}
-    </div>
+        {location && stateAllowedUbication ? (
+          <p>
+            Latitud: {location.lat}, Longitud: {location.lng}
+          </p>
+        ) : (
+          <p>Obteniendo ubicación...</p>
+        )}
+      </div>
     </div>
   );
 }
