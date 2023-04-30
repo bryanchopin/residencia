@@ -22,11 +22,11 @@ export default function MapMainContainer({ location }) {
   }, [location]);
 
   return (
-    <>
+    <> 
       <MapContainer
         id="map"
         center={center}
-        zoom={13}
+        zoom={19}
         className={styles.mapContainer}
       >
         <TileLayer
