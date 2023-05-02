@@ -39,7 +39,7 @@ const handleClick = () => {
         <h1>Directorio de servicios médicos internacionales</h1>
       </div>
       <div className={styles.imageContainer}>
-        <Image loading="eager" priority alt="MainLogo" src="/logoItt.png" width={150} height={150} />
+        <Image priority alt="MainLogo" src="/ibfklogo.png" width={150} height={150} />
       </div>
       <div className={styles.buttonContainer}>
         <button onClick={handleClick} className={styles.button}>
