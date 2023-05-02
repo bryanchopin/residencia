@@ -21,7 +21,7 @@ export default function Preloader() {
       <>
         <section id="preloader" className={styles.preloaderContainer}>
           <div  className={styles.logoContainer}>
-            <Image priority src="/ibfklogo.png" alt="logo" width={100} height={100} />
+            <Image priority src="/logoITT.png" alt="logo" width={100} height={100} />
           </div>
           <div className={styles.lds_roller}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>        
         </section>
