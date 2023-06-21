@@ -1,6 +1,9 @@
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import "leaflet/dist/leaflet.css";
+import styles from "./marker.module.css";
+import axios from "axios";
+import { BsHospital } from "react-icons/bs";
 
 const Marker = dynamic(
   () => import("react-leaflet").then((module) => module.Marker),
@@ -13,27 +16,62 @@ const Popup = dynamic(
 );
 
 export default function Markers({ center }) {
-  const [icon, setIcon] = useState(null);
+  const [icons, setIcons] = useState(null);
+  const [markersUbication, setMarkersUbication] = useState([]);
 
   useEffect(() => {
     import("leaflet").then((L) => {
       const customIcon = L.icon({
-        iconUrl: "/logoITT.png",
+        iconUrl: "/ubication.png",
         iconSize: [70, 70],
       });
-      setIcon(customIcon);
+      const customIconService = L.icon({
+        iconUrl: "/hospitalLogo.png",
+        iconSize: [70, 70],
+      });
+      setIcons({
+        iconLocal: customIcon,
+        iconService: customIconService,
+      });
     });
+
+    axios
+      .get("/api/marker")
+      .then(function (response) {
+        setMarkersUbication(response.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
 
   return (
     <>
-      {icon && (
-        <Marker position={center} icon={icon}>
-          <Popup>
-            Secretaria de salud mental. <br /> 6647517723.
-          </Popup>
+      {icons && (
+        <Marker position={center} icon={icons.iconLocal}>
+          {/* <Popup>
+            <div className={styles.popUpContainer}>
+              <BsHospital fontSize={"3em"} />
+              Secretaria de salud mental. <br /> 6647517723.
+            </div>
+          </Popup> */}
         </Marker>
       )}
+
+      {markersUbication.map((marker) => (
+        <Marker
+          key={marker.id}
+          position={[marker.latitude, marker.longitude]}
+          icon={icons.iconService}
+        >
+          <Popup>
+            <div className={styles.popUpContainer}>
+              <BsHospital fontSize={"3em"} />
+              {marker.name}
+            </div>
+          </Popup>
+        </Marker>
+      ))}
     </>
   );
 }

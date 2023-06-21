@@ -1,53 +1,58 @@
 import Image from "next/image";
+
+import { useState, useEffect } from "react";
+
+import MainContainer from "@/layouts/mainContainer/mainContainer";
+import MainServices from "@/layouts/mainServices/mainServices";
+
+import Preloader from "@/components/preloader/preloader";
 import MapContainer from "@/components/MapContainer/mapContainer";
 import Navbar from "@/components/Navbar/navbar";
 import SideBar from "@/components/SideBar/sideBar";
-import { useState, useEffect } from "react";
-import MainContainer from "@/layouts/mainContainer/mainContainer";
-import Preloader from "@/components/preloader/preloader";
+import UserBtn from "@/components/userBtn/userBtn";
 
 export default function Home() {
+
   const [showSideBar, setShowSideBar] = useState(false);
+  const [showMainView, setShowMainView] = useState(true);
+  const [showServices, setShowServices] = useState(false);
 
   const [allowedUbication, setAllowedUbication] = useState(false);
-  const [showMainView, setShowMainView] = useState(true);
-
   const [location, setLocation] = useState();
 
-  const handleShowSideBar = () => {
-    setShowSideBar(!showSideBar);
-  };
-
-  const handleShowMainView = () => {
-    setShowMainView(!showMainView);
-  };
-
-  const handleAllowedUbication = () => {
-    setAllowedUbication(!allowedUbication);
-  };
 
   return (
     <>
+
       <Preloader />
 
+
       <MainContainer 
-        handleShowMainView={handleShowMainView} 
-        handleAllowedUbication={handleAllowedUbication}
-        setLocation={setLocation}
         location={location}
+        setLocation={setLocation}
         stateAllowedUbication={allowedUbication}
+        handleShowMainView={()=>{setShowMainView(!showMainView)}}
+        handleAllowedUbication={()=>{setAllowedUbication(!allowedUbication)}}
         state={showMainView} />
 
       {location && <MapContainer location={location} />}
 
+      <UserBtn />
+
       <Navbar
-        handleShowMainView={handleShowMainView}
-        handleShowSideBar={handleShowSideBar}
+        handleShowMainView={()=>{setShowMainView(!showMainView)}}
+        handleShowSideBar={()=>{setShowSideBar(!showSideBar)}}
+        handleShowServices={()=>{setShowServices(!showServices)}}
+      />
+
+      <MainServices
+        state={showServices}
+        handleCloseWindow={()=>{setShowServices(!showServices)}}
       />
 
       <SideBar
-        showSideBar={showSideBar}
-        handleShowSideBar={handleShowSideBar}
+        state={showSideBar}
+        handleCloseWindow={()=>{setShowSideBar(!showSideBar)}}
       />
     </>
   );

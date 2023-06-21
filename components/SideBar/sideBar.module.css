@@ -8,6 +8,13 @@
     z-index: 1;
     animation: slideInFromRight 1s;
     animation-fill-mode: forwards;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2em;
 }
 
 
@@ -21,6 +28,14 @@
     z-index: 1;
     animation: slideOutToRight 1s;
     animation-fill-mode: forwards;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2em;
+
 }
 
 @keyframes slideInFromRight {
@@ -45,3 +60,81 @@
     }
     
 }
+
+
+
+.titleContainer{
+    width: 90%;
+    height: auto;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+
+.formContainer{
+    width: 90%;
+    height: 30em;
+    /* border: 2px solid black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+.formContainer label{
+    height: auto;
+    width: 90%;
+    text-align: left;
+    font-size: 1.5em;
+    /* border-bottom: 3px solid black; */
+}
+
+.formContainer input{
+    height: 3em;
+    width: 90%;
+    border-radius: 10px;
+    padding-left: 1em;
+}
+
+.formContainer button{
+    height: 3em;
+    width: 70%;
+    border-radius: 10px;
+}
+
+.optionsContainer{
+    width: 90%;
+    height: 7em;
+    /* border: 2px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btnContainer{
+    background-color: black;
+    width: 40%;
+    height: 3em;
+    color: white;
+    border: 2px solid rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.lineSeparator{
+    width: 0.5em;
+    height: 90%;
+    background-color: black;
+    border-radius: 10px;
+
+}
+
+
+

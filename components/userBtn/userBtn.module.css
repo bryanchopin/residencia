@@ -1,0 +1,13 @@
+.UserBtn{
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    height: 5em;
+    width: 5em;
+    border-radius: 50%;
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+}

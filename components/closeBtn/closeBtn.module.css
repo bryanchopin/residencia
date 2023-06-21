@@ -1,0 +1,24 @@
+.closeBtnContainer{
+    width: 3em;
+    height: 3em;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.closeBtnContainer span{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2em;
+    color: white;
+}
+
+/* .closeBtnContainer span:hover{
+    filter: drop-shadow();
+} */

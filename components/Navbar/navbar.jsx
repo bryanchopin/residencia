@@ -6,7 +6,8 @@ import {
 } from "react-icons/md";
 import { FaLocationArrow } from "react-icons/fa";
 import {IoExit} from "react-icons/io5";
-export default function Navbar({ handleShowSideBar, handleShowMainView }) {
+import {CgMenuGridR} from "react-icons/cg";
+export default function Navbar({ handleShowSideBar, handleShowMainView, handleShowServices }) {
   return (
     <>
       <div className={styles.navbarContainer}>
@@ -17,9 +18,9 @@ export default function Navbar({ handleShowSideBar, handleShowMainView }) {
             </div>
             <div className={styles.textLink}>Exit</div>
           </div>
-          <div className={styles.navLinkContainer}>
+          <div onClick={handleShowServices} className={styles.navLinkContainer}>
             <div className={styles.iconLink}>
-              <FaLocationArrow />
+              <CgMenuGridR fontSize={"1.8em"} />
             </div>
             <div className={styles.textLink}>Services</div>
           </div>
