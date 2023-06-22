@@ -79,5 +79,109 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+  }
+
+  .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 5em;
+    height: 5em;
+    color: white;
+    cursor: pointer;
+  }
+
+  .iconBack{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 5em;
+    height: 5em;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+
+  .socialMediaBar{
+    width: 100%;
+    height: 5em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .iconSocial{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 5em;
+    height: 5em;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+
+  .formStablishment{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .formStablishment label{
+    width: 100%;
+    height: 2em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1em;
+  }
+
+  .formStablishment input{
+    width: 100%;
+    height: 2em;
+    border: 2px solid #000000;
+    border-radius: 0.5em;
+    padding-left: 1em;
+    font-size: 1em;
+  }
+
+  .formStablishment textarea{
+    width: 100%;
+    height: 5em;
+    border: 2px solid #000000;
+    border-radius: 0.5em;
+    padding-left: 1em;
+    font-size: 1em;
+  }
+
+  .formStablishment button{
+    width: 100%;
+    height: 2em;
+    border: 2px solid #000000;
+    border-radius: 0.5em;
+    background-color: #000000;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    .optionsContainer{
+      width: 90%;
+      height: 90%;
+      /* border: 2px solid red; */
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .socialMediaBar{
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+    }
   }

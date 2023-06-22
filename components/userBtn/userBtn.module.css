@@ -11,3 +11,12 @@
     align-items: center;
     border: 3px solid black;
 }
+
+.icon{
+    width: 3em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
