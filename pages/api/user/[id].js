@@ -1,16 +1,16 @@
 import { dbConnect } from "../../../utils/dbConnection";
 import User from "../../../models/user";
-import NextCors from "nextjs-cors";
+// import NextCors from "nextjs-cors";
 
 dbConnect();
 
 export default async function handler(req, res) {
-  await NextCors(req, res, {
-    // Options
-    methods: ["GET", "DELETE", "POST", "OPTIONS", "PUT"],
-    origin: ["https://residencia-omega.vercel.app/", "http://localhost:3000"],
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  });
+  // await NextCors(req, res, {
+  //   // Options
+  //   methods: ["GET", "DELETE", "POST", "OPTIONS", "PUT"],
+  //   origin: ["https://residencia-omega.vercel.app/", "http://localhost:3000"],
+  //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  // });
 
   const {
     method,
