@@ -46,6 +46,7 @@ export default function Home() {
       />
 
       <MainServices
+        location={location}
         state={showServices}
         handleCloseWindow={()=>{setShowServices(!showServices)}}
       />
